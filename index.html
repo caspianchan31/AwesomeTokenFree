@@ -3,10 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenClaw Free Token Directory</title>
+    <title>OpenClaw Free Token Directory | Free API & OpenAI-Compatible Providers</title>
     <meta
       name="description"
-      content="A content-first directory of free token, free-tier, and OAuth access options for OpenClaw, with official sources, tradeoffs, and quick-start paths."
+      content="OpenClaw free token directory for OpenAI-compatible providers, free API tiers, and OAuth access options, with official sources, quick-start commands, and provider comparisons."
+    />
+    <meta
+      name="keywords"
+      content="OpenClaw, free token, free API, OpenAI-compatible providers, OAuth, Gemini API, Groq, OpenRouter, Hugging Face, Mistral, SiliconFlow, DashScope, Z.AI, Volcengine Ark, Ollama"
+    />
+    <meta name="author" content="caspianchan31" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://caspianchan31.github.io/AwesomeTokenFree/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="OpenClaw Free Token Directory | Free API & OpenAI-Compatible Providers" />
+    <meta
+      property="og:description"
+      content="Find free tokens, free API tiers, and OpenAI-compatible providers for OpenClaw, with official sources, quick-start commands, and tradeoff notes."
+    />
+    <meta property="og:url" content="https://caspianchan31.github.io/AwesomeTokenFree/" />
+    <meta property="og:site_name" content="OpenClaw Free Token Directory" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OpenClaw Free Token Directory | Free API & OpenAI-Compatible Providers" />
+    <meta
+      name="twitter:description"
+      content="Find free tokens, free API tiers, and OpenAI-compatible providers for OpenClaw, with official sources and quick-start commands."
     />
     <meta name="theme-color" content="#101826" />
     <link rel="stylesheet" href="./styles.css" />
@@ -18,10 +39,11 @@
           <p class="eyebrow">OpenClaw Free Token Guide</p>
           <h1>Free Tokens for OpenClaw</h1>
           <p class="hero__lead">
-            A content-first directory for OpenClaw users looking for free tokens,
-            free-tier APIs, and official OAuth access. Every entry was checked against
-            official docs or pricing pages on <strong>March 14, 2026</strong>, then
-            organized by setup style, tradeoffs, and practical fit.
+            A directory for OpenClaw users looking for free tokens, free API tiers,
+            OpenAI-compatible providers, and official OAuth access. Every entry was
+            checked against official docs or pricing pages on
+            <strong>March 14, 2026</strong>, then organized by setup style, tradeoffs,
+            and practical fit.
           </p>
           <div class="hero__actions">
             <a href="#providers" class="button button--primary">Browse Providers</a>
@@ -54,7 +76,8 @@
             <button class="chip is-active" data-filter="all">All</button>
             <button class="chip" data-filter="direct">Direct Support</button>
             <button class="chip" data-filter="oauth">OAuth Free Access</button>
-            <button class="chip" data-filter="gateway">Gateway / Compatibility Layer</button>
+            <button class="chip" data-filter="gateway">OpenAI-Compatible / Gateway</button>
+            <button class="chip" data-filter="local">Local / Self-hosted</button>
           </div>
           <div class="providers-grid" id="providers-grid"></div>
         </section>
@@ -73,12 +96,12 @@
             <article class="roadmap__item">
               <span class="roadmap__index">02</span>
               <h3>Then compare free limits</h3>
-              <p>If maximizing free usage matters, compare Qwen daily requests, Gemini free-tier quotas, and Groq free limits.</p>
+              <p>If maximizing free usage matters, compare Qwen daily requests, Gemini free-tier quotas, Groq free limits, and China-friendly APIs like SiliconFlow or DashScope.</p>
             </article>
             <article class="roadmap__item">
               <span class="roadmap__index">03</span>
-              <h3>Keep keys out of the frontend</h3>
-              <p>These tokens belong in OpenClaw, local environment variables, or a backend service, not in client-side source code.</p>
+              <h3>Use local models when volume is high</h3>
+              <p>If you burn tokens every day, move routine work to Ollama and save paid cloud models for the tasks that actually need them.</p>
             </article>
           </div>
         </section>
@@ -100,6 +123,14 @@
             <article class="deploy-card">
               <h3>Best for speed</h3>
               <p>Groq is the obvious pick if low latency matters more than broad model coverage.</p>
+            </article>
+            <article class="deploy-card">
+              <h3>Best for mainland China</h3>
+              <p>SiliconFlow, DashScope, Z.AI, and Volcengine Ark are the most practical options if you want lower latency and easier domestic access.</p>
+            </article>
+            <article class="deploy-card">
+              <h3>Best for zero recurring spend</h3>
+              <p>Ollama is the real long-term answer if your goal is to stop paying per-token for everyday tasks.</p>
             </article>
             <article class="deploy-card">
               <h3>Best for model variety</h3>
@@ -129,6 +160,10 @@
             <article>
               <h3>OpenClaw support is not the same as best value</h3>
               <p>Some providers are easier to connect, while others give better free volume. This page separates those tradeoffs.</p>
+            </article>
+            <article>
+              <h3>Community roundups often mix promos with durable tiers</h3>
+              <p>If a source lists one-time gifts or event bonuses, check the official pricing or promo page before treating it as a stable free plan.</p>
             </article>
           </div>
         </section>

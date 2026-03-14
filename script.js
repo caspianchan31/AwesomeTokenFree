@@ -125,6 +125,26 @@ const providers = [
     ]
   },
   {
+    name: "Mistral API",
+    category: "direct",
+    mode: "Direct Support",
+    summary:
+      "Mistral has an official free Experiment plan for API testing, and OpenClaw supports it as a first-class provider.",
+    tag: "Official free experiment tier",
+    facts: [
+      "OpenClaw provides a dedicated `mistral` provider with `MISTRAL_API_KEY`.",
+      "Mistral's help center documents a free Experiment plan that requires a verified phone number and no credit card.",
+      "Mistral documents a conservative free API tier intended for evaluation and prototyping."
+    ],
+    command:
+      "openclaw onboard --auth-choice mistral-api-key",
+    links: [
+      ["OpenClaw Mistral Docs", "https://docs.openclaw.ai/providers/mistral"],
+      ["Mistral Experiment Plan", "https://help.mistral.ai/en/articles/450104-how-can-i-try-the-api-for-free-with-the-experiment-plan"],
+      ["Mistral Rate Limits", "https://help.mistral.ai/en/articles/392924-how-do-api-rate-limits-work-and-how-can-i-increase-them"]
+    ]
+  },
+  {
     name: "Kilo Gateway",
     category: "gateway",
     mode: "Gateway",
@@ -144,6 +164,106 @@ const providers = [
       ["OpenClaw Provider Overview", "https://docs.openclaw.ai/concepts/model-providers"],
       ["Kilo Gateway", "https://kilo.ai/gateway"],
       ["Kilo Authentication", "https://kilo.ai/docs/gateway/authentication"]
+    ]
+  },
+  {
+    name: "SiliconFlow",
+    category: "gateway",
+    mode: "OpenAI-Compatible",
+    summary:
+      "SiliconFlow is one of the strongest China-friendly options because it clearly labels free models and keeps fixed free-model rate limits.",
+    tag: "Best China-friendly gateway",
+    facts: [
+      "SiliconFlow documents that free models exist and that free-model calls cost 0 in billing.",
+      "Its docs state rate limits for free models are fixed and separate from paid-model limits.",
+      "This is a good choice when you want lower latency in mainland China and access to many open models through one endpoint."
+    ],
+    command:
+      "base_url=https://api.siliconflow.cn/v1\n# use with OpenClaw custom OpenAI-compatible provider",
+    links: [
+      ["SiliconFlow Rate Limits", "https://docs.siliconflow.cn/en/userguide/rate-limits/rate-limit-and-upgradation"],
+      ["SiliconFlow Free Model Example", "https://docs.siliconflow.cn/en/usercases/use-siliconcloud-in-bob"],
+      ["SiliconFlow Console", "https://siliconflow.cn"]
+    ]
+  },
+  {
+    name: "Alibaba Cloud DashScope",
+    category: "gateway",
+    mode: "OpenAI-Compatible",
+    summary:
+      "DashScope is useful if you want a broad China-based catalog with OpenAI-compatible access and lots of per-model trial quotas.",
+    tag: "Large trial catalog",
+    facts: [
+      "DashScope documents an OpenAI-compatible base URL at `https://dashscope.aliyuncs.com/compatible-mode/v1`.",
+      "Many DashScope model docs publish per-model free token quotas, typically valid for 90 days after activation.",
+      "This is one of the easiest ways to try Qwen-family and partner models from a single mainland platform."
+    ],
+    command:
+      "base_url=https://dashscope.aliyuncs.com/compatible-mode/v1\n# use DASHSCOPE_API_KEY with OpenClaw custom OpenAI-compatible provider",
+    links: [
+      ["DashScope OpenAI-Compatible Example", "https://help.aliyun.com/zh/model-studio/math-language-model"],
+      ["DashScope Model Docs", "https://help.aliyun.com/zh/model-studio/"],
+      ["DashScope Console", "https://dashscope.aliyun.com"]
+    ]
+  },
+  {
+    name: "Z.AI (GLM)",
+    category: "direct",
+    mode: "Direct Support",
+    summary:
+      "Z.AI is OpenClaw's built-in path for GLM models, and its official docs still surface free GLM-4-Flash usage plus token promotions.",
+    tag: "Best GLM path",
+    facts: [
+      "OpenClaw supports GLM through the built-in `zai` provider and `ZAI_API_KEY`.",
+      "Zhipu's Batch API docs state that `GLM-4-Flash` is free in Batch mode.",
+      "Zhipu's current promotion page advertises new-user and referral token packages, so bonus quotas still exist but are promo-based."
+    ],
+    command:
+      "openclaw onboard --auth-choice zai-api-key",
+    links: [
+      ["OpenClaw Z.AI Docs", "https://docs.openclaw.ai/providers/zai"],
+      ["Zhipu Batch Docs", "https://docs.bigmodel.cn/cn/guide/tools/batch"],
+      ["Zhipu Promotions", "https://docs.bigmodel.cn/cn/update/promotion"]
+    ]
+  },
+  {
+    name: "Volcengine Ark (Doubao)",
+    category: "gateway",
+    mode: "OpenAI-Compatible",
+    summary:
+      "Volcengine Ark is worth checking if you want Doubao access with China-based routing and model-level free token quotas.",
+    tag: "Daily-use China option",
+    facts: [
+      "Volcengine's public product pages state that each Doubao language model provides 500,000 free tokens.",
+      "Enterprise collaboration plans can raise that free allocation on eligible accounts.",
+      "Best for China-based everyday workloads where network stability matters more than global model breadth."
+    ],
+    command:
+      "base_url=https://ark.cn-beijing.volces.com/api/v3\n# use with OpenClaw custom OpenAI-compatible provider",
+    links: [
+      ["Volcengine Ark Free Quota", "https://www.volcengine.com/sem"],
+      ["Volcengine Free Trial Example", "https://www.volcengine.com/docs/6281/1392584"],
+      ["Volcengine Ark", "https://www.volcengine.com/product/ark"]
+    ]
+  },
+  {
+    name: "Ollama",
+    category: "local",
+    mode: "Local / Self-hosted",
+    summary:
+      "Ollama is the real zero-recurring-cost path: you run models locally and OpenClaw can use them natively with tool calling.",
+    tag: "Real token freedom",
+    facts: [
+      "OpenClaw has native Ollama support and recommends using the native Ollama API instead of `/v1` for tool calling.",
+      "OpenClaw auto-discovers compatible local models and sets their costs to 0.",
+      "Best for routine tasks, privacy-sensitive work, and users who want to eliminate recurring token spend."
+    ],
+    command:
+      "ollama pull llama3.3\nexport OLLAMA_API_KEY=\"ollama-local\"\n# then use ollama/* models in OpenClaw",
+    links: [
+      ["OpenClaw Ollama Docs", "https://docs.openclaw.ai/providers/ollama"],
+      ["OpenClaw Provider Overview", "https://docs.openclaw.ai/concepts/model-providers"],
+      ["Ollama", "https://ollama.com"]
     ]
   }
 ];
