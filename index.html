@@ -29,146 +29,246 @@
       name="twitter:description"
       content="Find free tokens, free API tiers, and OpenAI-compatible providers for OpenClaw, with official sources and quick-start commands."
     />
-    <meta name="theme-color" content="#101826" />
+    <meta name="theme-color" content="#111111" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff6b2c'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial, sans-serif' font-size='28' font-weight='700' fill='white'%3EOC%3C/text%3E%3C/svg%3E"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="ambient ambient--left"></div>
+    <div class="ambient ambient--right"></div>
+
     <div class="page-shell">
-      <header class="hero">
-        <div class="hero__content">
-          <p class="eyebrow">OpenClaw Free Token Guide</p>
-          <h1>Free Tokens for OpenClaw</h1>
-          <p class="hero__lead">
-            A directory for OpenClaw users looking for free tokens, free API tiers,
-            OpenAI-compatible providers, and official OAuth access. Every entry was
-            checked against official docs or pricing pages on
-            <strong>March 14, 2026</strong>, then organized by setup style, tradeoffs,
-            and practical fit.
-          </p>
-          <div class="hero__actions">
-            <a href="#providers" class="button button--primary">Browse Providers</a>
-            <a href="#picks" class="button button--ghost">Best Picks</a>
-          </div>
-        </div>
-        <aside class="hero__panel">
-          <div class="stat">
-            <span class="stat__label">Verified Providers</span>
-            <strong class="stat__value" id="provider-count">0</strong>
-          </div>
-          <div class="stat">
-            <span class="stat__label">Direct OpenClaw Support</span>
-            <strong class="stat__value" id="direct-count">0</strong>
-          </div>
-          <div class="stat">
-            <span class="stat__label">Checked On</span>
-            <strong class="stat__value">2026-03-14</strong>
-          </div>
-        </aside>
+      <header class="topbar">
+        <a class="brand" href="#">
+          <span class="brand__mark">OC</span>
+          <span class="brand__text">
+            <strong>AwesomeTokenFree</strong>
+            <small>OpenClaw Provider Decision Desk</small>
+          </span>
+        </a>
+        <nav class="topbar__actions">
+          <a href="#decision-cockpit" class="button button--ghost">Decision Desk</a>
+          <a href="#providers" class="button button--primary">Browse Providers</a>
+        </nav>
       </header>
 
       <main>
-        <section class="section section--filters" id="providers">
+        <section class="hero">
+          <div class="hero__copy">
+            <p class="eyebrow">OpenClaw Free Token Guide</p>
+            <h1>Choose the right free token path before you waste setup time.</h1>
+            <p class="hero__lead">
+              This is a decision-first directory for OpenClaw users. Instead of a flat list of
+              providers, it helps you decide by onboarding friction, free-tier durability, region
+              fit, and whether you want direct support, OAuth, a gateway, or a fully local setup.
+            </p>
+
+            <div class="hero__actions">
+              <a href="#decision-cockpit" class="button button--primary">Start with your goal</a>
+              <a href="#providers" class="button button--ghost">Compare all providers</a>
+            </div>
+
+            <div class="trust-strip">
+              <div class="trust-pill">
+                <span class="trust-pill__label">Verified against official docs</span>
+                <strong>March 14, 2026</strong>
+              </div>
+              <div class="trust-pill">
+                <span class="trust-pill__label">What this page optimizes for</span>
+                <strong>Fast selection, low guesswork</strong>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero__panel">
+            <div class="hero-card hero-card--contrast">
+              <p class="hero-card__kicker">Fastest good defaults</p>
+              <ul class="hero-card__list">
+                <li><strong>Qwen OAuth</strong> for zero-card onboarding</li>
+                <li><strong>Gemini API</strong> for balanced official free API access</li>
+                <li><strong>Ollama</strong> for long-term zero recurring spend</li>
+              </ul>
+            </div>
+            <div class="hero-metrics">
+              <article class="metric">
+                <span class="metric__label">Verified providers</span>
+                <strong class="metric__value" id="provider-count">0</strong>
+              </article>
+              <article class="metric">
+                <span class="metric__label">Direct OpenClaw support</span>
+                <strong class="metric__value" id="direct-count">0</strong>
+              </article>
+              <article class="metric">
+                <span class="metric__label">China-friendly options</span>
+                <strong class="metric__value" id="china-count">0</strong>
+              </article>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section section--spotlight" id="decision-cockpit">
           <div class="section__heading">
-            <p class="section__kicker">Filters</p>
-            <h2>Find a Provider by Setup Style</h2>
+            <p class="section__kicker">Decision Cockpit</p>
+            <h2>Start with the job you need done</h2>
+            <p>
+              The right provider depends less on raw model quality and more on how you plan to
+              access it. Pick a path below, then refine with search and filters.
+            </p>
           </div>
-          <div class="filters" id="filters">
-            <button class="chip is-active" data-filter="all">All</button>
-            <button class="chip" data-filter="direct">Direct Support</button>
-            <button class="chip" data-filter="oauth">OAuth Free Access</button>
-            <button class="chip" data-filter="gateway">OpenAI-Compatible / Gateway</button>
-            <button class="chip" data-filter="local">Local / Self-hosted</button>
+
+          <div class="scenario-grid" id="scenario-grid"></div>
+
+          <div class="control-panel">
+            <label class="search-field" for="provider-search">
+              <span>Search providers, limits, regions, or use cases</span>
+              <input
+                id="provider-search"
+                type="search"
+                placeholder="Try Gemini, China-friendly, local, starter credit..."
+                autocomplete="off"
+              />
+            </label>
+
+            <div class="filters" id="filters">
+              <button class="chip is-active" data-filter="all">All</button>
+              <button class="chip" data-filter="beginner">Beginner-friendly</button>
+              <button class="chip" data-filter="direct">Direct support</button>
+              <button class="chip" data-filter="oauth">OAuth</button>
+              <button class="chip" data-filter="gateway">Gateway</button>
+              <button class="chip" data-filter="china">China-friendly</button>
+              <button class="chip" data-filter="local">Local-first</button>
+            </div>
+
+            <div class="results-bar">
+              <p class="results-bar__summary" id="results-summary"></p>
+              <button class="button button--ghost button--small" id="clear-filters" type="button">
+                Reset filters
+              </button>
+            </div>
           </div>
-          <div class="providers-grid" id="providers-grid"></div>
         </section>
 
         <section class="section">
           <div class="section__heading">
-            <p class="section__kicker">Recommended Path</p>
-            <h2>If You Just Want the Fastest Start</h2>
+            <p class="section__kicker">Selection Logic</p>
+            <h2>How to choose without overthinking it</h2>
           </div>
+
           <div class="roadmap">
             <article class="roadmap__item">
               <span class="roadmap__index">01</span>
-              <h3>Start with the easiest path</h3>
-              <p>Begin with `Qwen OAuth`, `Gemini API`, or `Vercel AI Gateway`. They have the lowest setup friction.</p>
+              <h3>Decide how you want to authenticate</h3>
+              <p>
+                If you want the least friction, choose OAuth. If you want a reusable API key, stay
+                with direct providers. If you want wider model access, use a gateway.
+              </p>
             </article>
             <article class="roadmap__item">
               <span class="roadmap__index">02</span>
-              <h3>Then compare free limits</h3>
-              <p>If maximizing free usage matters, compare Qwen daily requests, Gemini free-tier quotas, Groq free limits, and China-friendly APIs like SiliconFlow or DashScope.</p>
+              <h3>Match the free tier to your real workload</h3>
+              <p>
+                Some options are durable free tiers, some are starter credits, and some are promo
+                or evaluation plans. Treat them differently.
+              </p>
             </article>
             <article class="roadmap__item">
               <span class="roadmap__index">03</span>
-              <h3>Use local models when volume is high</h3>
-              <p>If you burn tokens every day, move routine work to Ollama and save paid cloud models for the tasks that actually need them.</p>
+              <h3>Keep expensive cloud usage for the tasks that earn it</h3>
+              <p>
+                For daily high-volume work, moving routine tasks to Ollama usually produces the
+                biggest long-term savings.
+              </p>
             </article>
+          </div>
+        </section>
+
+        <section class="section" id="providers">
+          <div class="section__heading">
+            <p class="section__kicker">Provider Board</p>
+            <h2>Compare all providers in one place</h2>
+            <p>
+              Every card includes what it is best for, how the free access actually works, and the
+              fastest OpenClaw setup command.
+            </p>
+          </div>
+          <div class="providers-grid" id="providers-grid"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <h3>No providers match this filter</h3>
+            <p>Try a broader keyword or reset the filter state.</p>
           </div>
         </section>
 
         <section class="section" id="picks">
           <div class="section__heading">
             <p class="section__kicker">Best Picks</p>
-            <h2>What To Choose for Different Goals</h2>
+            <h2>Recommended paths for common goals</h2>
           </div>
           <div class="deploy-grid">
             <article class="deploy-card">
-              <h3>Best for zero-cost onboarding</h3>
-              <p>Start with Qwen OAuth if you want the fastest path without dealing with billing setup first.</p>
+              <h3>Zero-card onboarding</h3>
+              <p>Choose Qwen OAuth when your priority is starting immediately with the least setup friction.</p>
             </article>
             <article class="deploy-card">
-              <h3>Best balanced free API</h3>
-              <p>Gemini is usually the cleanest choice when you want official API access, decent quotas, and direct OpenClaw support.</p>
+              <h3>Most balanced official free API</h3>
+              <p>Gemini is the cleanest default when you want direct support, clear docs, and durable free-tier access.</p>
             </article>
             <article class="deploy-card">
-              <h3>Best for speed</h3>
-              <p>Groq is the obvious pick if low latency matters more than broad model coverage.</p>
+              <h3>Lowest latency</h3>
+              <p>Groq is the best fit when interaction speed matters more than broad catalog coverage.</p>
             </article>
             <article class="deploy-card">
-              <h3>Best for mainland China</h3>
-              <p>SiliconFlow, DashScope, Z.AI, and Volcengine Ark are the most practical options if you want lower latency and easier domestic access.</p>
+              <h3>Mainland China practicality</h3>
+              <p>SiliconFlow, DashScope, Z.AI, and Volcengine Ark are the strongest options when routing and regional access matter.</p>
             </article>
             <article class="deploy-card">
-              <h3>Best for zero recurring spend</h3>
-              <p>Ollama is the real long-term answer if your goal is to stop paying per-token for everyday tasks.</p>
+              <h3>Zero recurring spend</h3>
+              <p>Ollama is the real answer if you want to stop depending on paid token usage for routine work.</p>
             </article>
             <article class="deploy-card">
-              <h3>Best for model variety</h3>
-              <p>OpenRouter and Hugging Face are better when you want one credential that can touch multiple providers or model families.</p>
+              <h3>One credential, many models</h3>
+              <p>OpenRouter and Hugging Face are better when model variety matters more than maximizing free throughput.</p>
             </article>
           </div>
         </section>
 
         <section class="section section--warning">
           <div class="section__heading">
-            <p class="section__kicker">Notes</p>
-            <h2>Read This Before You Use Any Provider</h2>
+            <p class="section__kicker">Critical Notes</p>
+            <h2>What free-token pages usually hide</h2>
           </div>
           <div class="warning-list">
             <article>
-              <h3>Free policies change</h3>
-              <p>The numbers on this page reflect what was published on March 14, 2026. Recheck official docs regularly.</p>
+              <h3>Free policies move fast</h3>
+              <p>The details here reflect official pages checked on March 14, 2026. Recheck before treating any quota as stable.</p>
             </article>
             <article>
-              <h3>Some services are region-limited</h3>
-              <p>Gemini in particular may restrict free-tier or upgrade eligibility to official supported countries and regions.</p>
+              <h3>Starter credits are not durable free tiers</h3>
+              <p>Vercel, Kilo, and some gateway ecosystems are better treated as onboarding credits than infinite free usage.</p>
             </article>
             <article>
-              <h3>Some are free tiers, not unlimited free usage</h3>
-              <p>Vercel, Hugging Face, and OpenRouter are better treated as trial-scale or low-volume options, not heavy production capacity.</p>
+              <h3>Region fit changes the real experience</h3>
+              <p>A provider can look good on paper and still be a poor choice if latency, payment support, or access policies do not match your region.</p>
             </article>
             <article>
-              <h3>OpenClaw support is not the same as best value</h3>
-              <p>Some providers are easier to connect, while others give better free volume. This page separates those tradeoffs.</p>
-            </article>
-            <article>
-              <h3>Community roundups often mix promos with durable tiers</h3>
-              <p>If a source lists one-time gifts or event bonuses, check the official pricing or promo page before treating it as a stable free plan.</p>
+              <h3>Direct support and best value are different questions</h3>
+              <p>Built-in OpenClaw support reduces setup work, but the most practical free option may still be a compatible gateway or local model.</p>
             </article>
           </div>
         </section>
       </main>
     </div>
+
+    <template id="scenario-template">
+      <article class="scenario-card">
+        <p class="scenario-card__eyebrow"></p>
+        <h3 class="scenario-card__title"></h3>
+        <p class="scenario-card__description"></p>
+        <button class="button button--ghost button--small scenario-card__button" type="button"></button>
+      </article>
+    </template>
 
     <template id="provider-card-template">
       <article class="provider-card">
@@ -179,12 +279,38 @@
           </div>
           <span class="provider-card__mode"></span>
         </div>
+
         <p class="provider-card__summary"></p>
+
+        <dl class="provider-card__meta">
+          <div>
+            <dt>Best for</dt>
+            <dd class="provider-card__best-for"></dd>
+          </div>
+          <div>
+            <dt>Free access</dt>
+            <dd class="provider-card__free-model"></dd>
+          </div>
+          <div>
+            <dt>Region fit</dt>
+            <dd class="provider-card__region"></dd>
+          </div>
+          <div>
+            <dt>Setup effort</dt>
+            <dd class="provider-card__setup"></dd>
+          </div>
+        </dl>
+
         <ul class="provider-card__facts"></ul>
+
         <div class="provider-card__snippet-wrap">
-          <p class="provider-card__snippet-title">OpenClaw Quick Start</p>
+          <div class="provider-card__snippet-head">
+            <p class="provider-card__snippet-title">OpenClaw Quick Start</p>
+            <button class="copy-button" type="button">Copy</button>
+          </div>
           <pre class="provider-card__snippet"><code></code></pre>
         </div>
+
         <div class="provider-card__links"></div>
       </article>
     </template>
