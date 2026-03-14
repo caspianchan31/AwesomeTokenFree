@@ -1,31 +1,20 @@
 # OpenClaw Free Token Directory
 
-SEO-friendly navigation site for discovering free token, free-tier API, OpenAI-compatible provider, and OAuth-access options that work with OpenClaw.
-
-## What the site contains
-
-- Officially sourced provider entries
-- Direct support vs OAuth vs gateway categorization
-- Quick-start commands for OpenClaw
-- Notes on free limits, tradeoffs, and likely best-fit use cases
-- China-friendly and local-first options, not just US providers
-
-## Current providers
-
-- Qwen OAuth
-- Google Gemini API
-- Groq
-- Hugging Face Inference
-- OpenRouter Free Models
-- Mistral API
-- Vercel AI Gateway
-- Kilo Gateway
-- SiliconFlow
-- Alibaba Cloud DashScope
-- Z.AI (GLM)
-- Volcengine Ark (Doubao)
-- Ollama
+This public repository is now documentation-only.
 
 ## Scope
 
-The site focuses on useful navigation content, not platform deployment instructions. Provider notes were checked against official sources on 2026-03-14 and should be re-verified over time. Community articles are helpful for discovery, but promo-style claims are only included here when they can be matched to official docs.
+- Only the README is kept public.
+- The website implementation, data layer, and automation-related code are no longer included in this repository.
+- Research notes were originally compiled around 2026-03-14 and should always be re-verified against official sources before use.
+
+## Current direction
+
+- Keep the public repo minimal.
+- Share overview context and maintenance notes here.
+- Move site code, crawler logic, and structured provider data to a non-public location if needed.
+
+## Notes
+
+- Community roundups are useful for discovery, but promo-style claims should not be treated as durable free tiers without checking official documentation.
+- Region fit, account requirements, and free-tier limits change frequently.
