@@ -1,32 +1,24 @@
-# OpenClaw 免费 Token 导航
+# OpenClaw Free Token Directory
 
-纯静态站点，无构建依赖，适合直接部署到 Vercel 或 GitHub Pages。
+Content-first navigation site for discovering free token, free-tier, and OAuth-access providers that can work with OpenClaw, with emphasis on useful comparisons over deployment instructions.
 
-## 本地预览
+## What the site contains
 
-```bash
-python3 -m http.server 4173
-```
+- Officially sourced provider entries
+- Direct support vs OAuth vs gateway categorization
+- Quick-start commands for OpenClaw
+- Notes on free limits, tradeoffs, and likely best-fit use cases
 
-然后打开 `http://127.0.0.1:4173`。
+## Current providers
 
-## 部署
+- Qwen OAuth
+- Google Gemini API
+- Groq
+- Hugging Face Inference
+- OpenRouter Free Models
+- Vercel AI Gateway
+- Kilo Gateway
 
-### Vercel
+## Scope
 
-- Import 这个仓库
-- Framework Preset 选 `Other`
-- `Build Command` 留空
-- `Output Directory` 留空
-
-### GitHub Pages
-
-- 推送到 GitHub
-- 在仓库 `Settings -> Pages`
-- Source 选 `Deploy from a branch`
-- Branch 选 `main`
-- Folder 选 `/ (root)`
-
-## 内容说明
-
-页面中收录的免费策略和额度状态按 2026-03-14 检索结果整理，后续应定期复核官方来源。
+The site focuses on useful navigation content, not platform deployment instructions. Provider notes were checked against official sources on 2026-03-14 and should be re-verified over time.

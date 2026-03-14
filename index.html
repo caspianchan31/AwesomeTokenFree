@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenClaw 免费 Token 导航</title>
+    <title>OpenClaw Free Token Directory</title>
     <meta
       name="description"
-      content="汇总可用于 OpenClaw 的免费 Token / 免费额度渠道，包含官方来源、接入方式、免费规则与部署说明。"
+      content="A content-first directory of free token, free-tier, and OAuth access options for OpenClaw, with official sources, tradeoffs, and quick-start paths."
     />
     <meta name="theme-color" content="#101826" />
     <link rel="stylesheet" href="./styles.css" />
@@ -16,28 +16,29 @@
       <header class="hero">
         <div class="hero__content">
           <p class="eyebrow">OpenClaw Free Token Guide</p>
-          <h1>给小龙虾找粮票</h1>
+          <h1>Free Tokens for OpenClaw</h1>
           <p class="hero__lead">
-            这是一个面向 OpenClaw 的免费 Token 导航站。只收录我在
-            <strong>2026 年 3 月 14 日</strong>
-            通过官方文档或官方站点核实过的渠道，并区分“直接支持”“需兼容层”“OAuth 免费方案”。
+            A content-first directory for OpenClaw users looking for free tokens,
+            free-tier APIs, and official OAuth access. Every entry was checked against
+            official docs or pricing pages on <strong>March 14, 2026</strong>, then
+            organized by setup style, tradeoffs, and practical fit.
           </p>
           <div class="hero__actions">
-            <a href="#providers" class="button button--primary">查看可用渠道</a>
-            <a href="#deploy" class="button button--ghost">部署到 Vercel / GitHub Pages</a>
+            <a href="#providers" class="button button--primary">Browse Providers</a>
+            <a href="#picks" class="button button--ghost">Best Picks</a>
           </div>
         </div>
         <aside class="hero__panel">
           <div class="stat">
-            <span class="stat__label">已核实渠道</span>
+            <span class="stat__label">Verified Providers</span>
             <strong class="stat__value" id="provider-count">0</strong>
           </div>
           <div class="stat">
-            <span class="stat__label">直接支持 OpenClaw</span>
+            <span class="stat__label">Direct OpenClaw Support</span>
             <strong class="stat__value" id="direct-count">0</strong>
           </div>
           <div class="stat">
-            <span class="stat__label">数据核验日期</span>
+            <span class="stat__label">Checked On</span>
             <strong class="stat__value">2026-03-14</strong>
           </div>
         </aside>
@@ -46,84 +47,88 @@
       <main>
         <section class="section section--filters" id="providers">
           <div class="section__heading">
-            <p class="section__kicker">筛选</p>
-            <h2>按接入方式找渠道</h2>
+            <p class="section__kicker">Filters</p>
+            <h2>Find a Provider by Setup Style</h2>
           </div>
           <div class="filters" id="filters">
-            <button class="chip is-active" data-filter="all">全部</button>
-            <button class="chip" data-filter="direct">OpenClaw 直接支持</button>
-            <button class="chip" data-filter="oauth">OAuth 免费</button>
-            <button class="chip" data-filter="gateway">统一网关 / 兼容层</button>
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="direct">Direct Support</button>
+            <button class="chip" data-filter="oauth">OAuth Free Access</button>
+            <button class="chip" data-filter="gateway">Gateway / Compatibility Layer</button>
           </div>
           <div class="providers-grid" id="providers-grid"></div>
         </section>
 
         <section class="section">
           <div class="section__heading">
-            <p class="section__kicker">建议路线</p>
-            <h2>如果你只想最快跑起来</h2>
+            <p class="section__kicker">Recommended Path</p>
+            <h2>If You Just Want the Fastest Start</h2>
           </div>
           <div class="roadmap">
             <article class="roadmap__item">
               <span class="roadmap__index">01</span>
-              <h3>先选最省心</h3>
-              <p>优先用 `Qwen OAuth`、`Gemini API`、`Vercel AI Gateway`。这三类对新手最友好。</p>
+              <h3>Start with the easiest path</h3>
+              <p>Begin with `Qwen OAuth`, `Gemini API`, or `Vercel AI Gateway`. They have the lowest setup friction.</p>
             </article>
             <article class="roadmap__item">
               <span class="roadmap__index">02</span>
-              <h3>再看额度</h3>
-              <p>想拼免费量，优先比较 `Qwen` 日请求数、`Gemini` 免费层、`Groq` 免费速率。</p>
+              <h3>Then compare free limits</h3>
+              <p>If maximizing free usage matters, compare Qwen daily requests, Gemini free-tier quotas, and Groq free limits.</p>
             </article>
             <article class="roadmap__item">
               <span class="roadmap__index">03</span>
-              <h3>别把密钥丢前端</h3>
-              <p>这些 token 只能填进 OpenClaw、本地环境变量或服务端，不要写进网页源码。</p>
+              <h3>Keep keys out of the frontend</h3>
+              <p>These tokens belong in OpenClaw, local environment variables, or a backend service, not in client-side source code.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="picks">
+          <div class="section__heading">
+            <p class="section__kicker">Best Picks</p>
+            <h2>What To Choose for Different Goals</h2>
+          </div>
+          <div class="deploy-grid">
+            <article class="deploy-card">
+              <h3>Best for zero-cost onboarding</h3>
+              <p>Start with Qwen OAuth if you want the fastest path without dealing with billing setup first.</p>
+            </article>
+            <article class="deploy-card">
+              <h3>Best balanced free API</h3>
+              <p>Gemini is usually the cleanest choice when you want official API access, decent quotas, and direct OpenClaw support.</p>
+            </article>
+            <article class="deploy-card">
+              <h3>Best for speed</h3>
+              <p>Groq is the obvious pick if low latency matters more than broad model coverage.</p>
+            </article>
+            <article class="deploy-card">
+              <h3>Best for model variety</h3>
+              <p>OpenRouter and Hugging Face are better when you want one credential that can touch multiple providers or model families.</p>
             </article>
           </div>
         </section>
 
         <section class="section section--warning">
           <div class="section__heading">
-            <p class="section__kicker">注意</p>
-            <h2>使用前先看这三条</h2>
+            <p class="section__kicker">Notes</p>
+            <h2>Read This Before You Use Any Provider</h2>
           </div>
           <div class="warning-list">
             <article>
-              <h3>免费规则会变</h3>
-              <p>页面展示的是 2026-03-14 当天查到的规则。上线后建议你每周复核一次官方文档。</p>
+              <h3>Free policies change</h3>
+              <p>The numbers on this page reflect what was published on March 14, 2026. Recheck official docs regularly.</p>
             </article>
             <article>
-              <h3>部分服务受地区限制</h3>
-              <p>尤其是 Gemini 一类服务，免费层和升级资格通常只对官方列出的 eligible countries 开放。</p>
+              <h3>Some services are region-limited</h3>
+              <p>Gemini in particular may restrict free-tier or upgrade eligibility to official supported countries and regions.</p>
             </article>
             <article>
-              <h3>有些是“免费额度”，不是永久无限</h3>
-              <p>像 Vercel、Hugging Face、OpenRouter 更接近试用或低配免费层，适合体验，不适合重负载生产。</p>
+              <h3>Some are free tiers, not unlimited free usage</h3>
+              <p>Vercel, Hugging Face, and OpenRouter are better treated as trial-scale or low-volume options, not heavy production capacity.</p>
             </article>
             <article>
-              <h3>OpenClaw 支持度不等于最佳性价比</h3>
-              <p>有的渠道接入最简单，有的渠道免费量最大。页面把这两件事拆开标注了。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" id="deploy">
-          <div class="section__heading">
-            <p class="section__kicker">部署</p>
-            <h2>这个站点怎么发出去</h2>
-          </div>
-          <div class="deploy-grid">
-            <article class="deploy-card">
-              <h3>Vercel</h3>
-              <p>导入这个仓库，框架预设选 `Other`。不需要构建命令，输出目录留空即可。</p>
-              <pre><code>Build Command: 留空
-Output Directory: 留空</code></pre>
-            </article>
-            <article class="deploy-card">
-              <h3>GitHub Pages</h3>
-              <p>推到 GitHub 后，在仓库设置里开启 Pages，选择 `Deploy from a branch`，目录用根目录 `/`。</p>
-              <pre><code>Branch: main
-Folder: / (root)</code></pre>
+              <h3>OpenClaw support is not the same as best value</h3>
+              <p>Some providers are easier to connect, while others give better free volume. This page separates those tradeoffs.</p>
             </article>
           </div>
         </section>
@@ -142,7 +147,7 @@ Folder: / (root)</code></pre>
         <p class="provider-card__summary"></p>
         <ul class="provider-card__facts"></ul>
         <div class="provider-card__snippet-wrap">
-          <p class="provider-card__snippet-title">OpenClaw 快速命令</p>
+          <p class="provider-card__snippet-title">OpenClaw Quick Start</p>
           <pre class="provider-card__snippet"><code></code></pre>
         </div>
         <div class="provider-card__links"></div>

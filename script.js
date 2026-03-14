@@ -2,38 +2,40 @@ const providers = [
   {
     name: "Qwen OAuth",
     category: "oauth",
-    mode: "OAuth 免费",
+    mode: "OAuth Free Access",
     summary:
-      "OpenClaw 官方文档明确写了 Qwen 的免费层 OAuth 流程，适合不想先绑卡的人。",
-    tag: "最直接的白嫖入口",
+      "OpenClaw documents Qwen as an official free-tier OAuth flow, which makes it one of the easiest no-card options.",
+    tag: "Best no-card path",
     facts: [
-      "OpenClaw 官方写明：Qwen Coder / Vision 提供免费层 OAuth。",
-      "OpenClaw 官方文档给出的额度是每天 2,000 次请求，实际仍受 Qwen 速率限制。",
-      "不是传统 API Key，而是设备码登录后由 OpenClaw 管理令牌。"
+      "OpenClaw documents Qwen Coder and Vision as supporting a free-tier OAuth flow.",
+      "The OpenClaw docs note up to 2,000 requests per day, still subject to Qwen-side rate limits.",
+      "This is not a standard API key flow. OpenClaw handles the token after device-code login.",
+      "Best for users who want to get started immediately and accept platform-managed auth."
     ],
     command:
       "openclaw plugins enable qwen-portal-auth\nopenclaw models auth login --provider qwen-portal --set-default",
     links: [
-      ["OpenClaw Qwen 文档", "https://docs.openclaw.ai/providers/qwen"],
-      ["OpenClaw 模型提供商总览", "https://docs.openclaw.ai/concepts/model-providers"]
+      ["OpenClaw Qwen Docs", "https://docs.openclaw.ai/providers/qwen"],
+      ["OpenClaw Provider Overview", "https://docs.openclaw.ai/concepts/model-providers"]
     ]
   },
   {
     name: "Google Gemini API",
     category: "direct",
-    mode: "直接支持",
+    mode: "Direct Support",
     summary:
-      "Gemini 是目前最稳妥的免费 API 之一，OpenClaw 内建 `google/*` 提供商，拿到 `GEMINI_API_KEY` 就能上。",
-    tag: "免费层稳定",
+      "Gemini is one of the more stable free API options right now. OpenClaw includes built-in `google/*` provider support.",
+    tag: "Stable free tier",
     facts: [
-      "OpenClaw 官方文档列出内建 `google` 提供商，认证字段是 `GEMINI_API_KEY`。",
-      "Google 官方价格页显示多个 Gemini 模型存在 Free Tier。",
-      "Google 官方限额页公开了免费层 RPM / TPM / RPD。"
+      "OpenClaw lists `google` as a built-in provider and uses `GEMINI_API_KEY` for auth.",
+      "Google's official pricing page shows Free Tier availability for multiple Gemini models.",
+      "Google also publishes free-tier RPM, TPM, and RPD quota details.",
+      "Best default if you want official API access instead of an OAuth-only workflow."
     ],
     command:
-      "openclaw onboard --auth-choice gemini-api-key\n# 然后选择 google/gemini-* 模型",
+      "openclaw onboard --auth-choice gemini-api-key\n# then choose a google/gemini-* model",
     links: [
-      ["OpenClaw 模型提供商", "https://docs.openclaw.ai/concepts/model-providers"],
+      ["OpenClaw Provider Overview", "https://docs.openclaw.ai/concepts/model-providers"],
       ["Gemini Pricing", "https://ai.google.dev/pricing"],
       ["Gemini Rate Limits", "https://ai.google.dev/gemini-api/docs/quota"]
     ]
@@ -41,19 +43,20 @@ const providers = [
   {
     name: "Groq",
     category: "direct",
-    mode: "直接支持",
+    mode: "Direct Support",
     summary:
-      "Groq 在 OpenClaw 的提供商总览里是内建 provider，官方免费计划公开了可观的请求和 token 限额。",
-    tag: "速度很快",
+      "Groq is a built-in OpenClaw provider and publishes generous free-plan request and token limits.",
+    tag: "Very fast inference",
     facts: [
-      "OpenClaw 官方文档列出内建 `groq` 提供商，使用 `GROQ_API_KEY`。",
-      "Groq 官方限额页提供 Free Plan Limits，可直接看到各模型的每日请求和 token 限制。",
-      "Groq 官方文档说明其 OpenAI 兼容 base URL 是 `https://api.groq.com/openai/v1`。"
+      "OpenClaw lists `groq` as a built-in provider using `GROQ_API_KEY`.",
+      "Groq publishes Free Plan Limits with per-model request and token ceilings.",
+      "Groq also documents its OpenAI-compatible base URL as `https://api.groq.com/openai/v1`.",
+      "Best fit for low-latency interactive use where speed matters more than provider breadth."
     ],
     command:
-      "export GROQ_API_KEY=\"<your-groq-key>\"\n# 然后在 OpenClaw 里使用 groq/* 模型",
+      "export GROQ_API_KEY=\"<your-groq-key>\"\n# then use groq/* models inside OpenClaw",
     links: [
-      ["OpenClaw 模型提供商", "https://docs.openclaw.ai/concepts/model-providers"],
+      ["OpenClaw Provider Overview", "https://docs.openclaw.ai/concepts/model-providers"],
       ["Groq Rate Limits", "https://console.groq.com/docs/rate-limits"],
       ["Groq OpenAI Compatibility", "https://console.groq.com/docs/openai"]
     ]
@@ -61,19 +64,20 @@ const providers = [
   {
     name: "Hugging Face Inference",
     category: "direct",
-    mode: "直接支持",
+    mode: "Direct Support",
     summary:
-      "如果你想一把 token 试很多家模型，HF 是不错的统一入口。OpenClaw 官方专门有 Hugging Face 提供商文档。",
-    tag: "统一路由",
+      "If you want one token that can reach many models, Hugging Face is a practical routing layer and has dedicated OpenClaw docs.",
+    tag: "Unified routing",
     facts: [
-      "OpenClaw 官方说明 Hugging Face Inference Providers 可直接接 OpenClaw，使用 `HF_TOKEN` 或 `HUGGINGFACE_HUB_TOKEN`。",
-      "HF 官方价格页写明免费用户每月有 `$0.10` credits，且规则注明 `subject to change`。",
-      "额度用完后仍可继续使用，但需要额外购买 credits。"
+      "OpenClaw documents Hugging Face Inference Providers with `HF_TOKEN` or `HUGGINGFACE_HUB_TOKEN`.",
+      "Hugging Face pricing currently lists `$0.10` in monthly credits for free users, marked as subject to change.",
+      "After credits are exhausted, continued usage generally requires purchased credits.",
+      "Useful when you want access to multiple model backends behind one ecosystem."
     ],
     command:
       "openclaw onboard --auth-choice huggingface-api-key",
     links: [
-      ["OpenClaw Hugging Face 文档", "https://docs.openclaw.ai/providers/huggingface"],
+      ["OpenClaw Hugging Face Docs", "https://docs.openclaw.ai/providers/huggingface"],
       ["HF Inference Pricing", "https://huggingface.co/docs/api-inference/en/pricing"],
       ["HF Public AI Blog", "https://huggingface.co/blog/inference-providers-publicai"]
     ]
@@ -81,19 +85,20 @@ const providers = [
   {
     name: "OpenRouter Free Models",
     category: "direct",
-    mode: "直接支持",
+    mode: "Direct Support",
     summary:
-      "OpenRouter 的价值在于一个 key 覆盖很多模型，并且官方保留 free models 路由，适合轻量试玩 OpenClaw。",
-    tag: "低门槛试水",
+      "OpenRouter is useful when you want one key across many models, and it still exposes free-model routes for lightweight testing.",
+    tag: "Low-friction testing",
     facts: [
-      "OpenClaw 官方有独立的 OpenRouter 接入页。",
-      "OpenRouter 官方 FAQ 说明存在很多免费模型，但免费模型速率较低。",
-      "OpenRouter 官方定价页公开了免费用户的每日请求和每分钟限制。"
+      "OpenClaw has a dedicated OpenRouter provider page.",
+      "OpenRouter's FAQ states that many free models are available, with lower rate limits.",
+      "OpenRouter pricing also publishes daily and per-minute limits for free usage.",
+      "Best for browsing many models quickly, but less reliable if you need strong free throughput."
     ],
     command:
       'openclaw onboard --auth-choice apiKey --token-provider openrouter --token "$OPENROUTER_API_KEY"',
     links: [
-      ["OpenClaw OpenRouter 文档", "https://docs.openclaw.ai/providers/openrouter"],
+      ["OpenClaw OpenRouter Docs", "https://docs.openclaw.ai/providers/openrouter"],
       ["OpenRouter FAQ", "https://openrouter.ai/docs/faq"],
       ["OpenRouter Pricing", "https://openrouter.ai/pricing"]
     ]
@@ -101,19 +106,20 @@ const providers = [
   {
     name: "Vercel AI Gateway",
     category: "gateway",
-    mode: "统一网关",
+    mode: "Gateway",
     summary:
-      "Vercel AI Gateway 不是永久无限免费，但官方提供每月 $5 的免费 credits，而且 OpenClaw 直接支持。",
-    tag: "新号体验很强",
+      "Vercel AI Gateway is not unlimited free usage, but it does offer monthly free credits and has direct OpenClaw support.",
+    tag: "Strong starter credit",
     facts: [
-      "OpenClaw 官方有 `vercel-ai-gateway` provider 文档，认证字段是 `AI_GATEWAY_API_KEY`。",
-      "Vercel 官方价格页写明团队账户有每月 $5 的 AI Gateway 免费额度。",
-      "Vercel 官方写明兼容 OpenAI / Anthropic 风格接口，适合做统一出口。"
+      "OpenClaw documents `vercel-ai-gateway` with `AI_GATEWAY_API_KEY`.",
+      "Vercel pricing currently advertises `$5` in monthly AI Gateway credits on eligible plans.",
+      "Vercel also documents OpenAI- and Anthropic-compatible gateway behavior.",
+      "More of a gateway starter option than a long-term 'free forever' source."
     ],
     command:
       "openclaw onboard --auth-choice ai-gateway-api-key",
     links: [
-      ["OpenClaw Vercel AI Gateway 文档", "https://docs.openclaw.ai/providers/vercel-ai-gateway"],
+      ["OpenClaw Vercel AI Gateway Docs", "https://docs.openclaw.ai/providers/vercel-ai-gateway"],
       ["Vercel AI Gateway Pricing", "https://vercel.com/docs/ai-gateway/pricing"],
       ["Vercel OpenAI-Compatible API", "https://vercel.com/docs/ai-gateway/openai-compat"]
     ]
@@ -121,20 +127,21 @@ const providers = [
   {
     name: "Kilo Gateway",
     category: "gateway",
-    mode: "统一网关",
+    mode: "Gateway",
     summary:
-      "Kilo Gateway 现在对 OpenClaw 也有官方接入文档，而且官方站点提供免费起步 credit 与免费模型。",
-    tag: "免费模型比较多",
+      "Kilo Gateway now has official OpenClaw integration docs and currently offers starter credits plus free-model access.",
+    tag: "More free-model options",
     facts: [
-      "OpenClaw 官方有 `kilocode` provider 文档。",
-      "OpenClaw 模型提供商文档写到 Kilo 内建目录里包含多种 `Free` 模型。",
-      "Kilo 官方网关页标明 Free / Trial 方案包含 $5 初始 credit；认证页还写明 free models 支持匿名访问。"
+      "OpenClaw provides dedicated `kilocode` provider documentation.",
+      "The OpenClaw provider catalog notes multiple Kilo models marked as `Free`.",
+      "Kilo's gateway docs currently describe `$5` in starter credit and mention anonymous access for some free models.",
+      "Worth checking if you want a gateway that mixes starter credit with labeled free models."
     ],
     command:
       "openclaw onboard --kilocode-api-key <your-kilo-key>",
     links: [
-      ["OpenClaw Kilo 文档", "https://docs.openclaw.ai/providers/kilocode"],
-      ["OpenClaw 模型提供商", "https://docs.openclaw.ai/concepts/model-providers"],
+      ["OpenClaw Kilo Docs", "https://docs.openclaw.ai/providers/kilocode"],
+      ["OpenClaw Provider Overview", "https://docs.openclaw.ai/concepts/model-providers"],
       ["Kilo Gateway", "https://kilo.ai/gateway"],
       ["Kilo Authentication", "https://kilo.ai/docs/gateway/authentication"]
     ]
